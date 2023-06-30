@@ -22,6 +22,11 @@ jobs:
         with: 
             path: "package.json"
             prop_path: "name"
+          
+      - name: Set PackageName Variable
+        run: |
+          echo "packageName=${{steps.packageName.outputs.prop}}" >> $GITHUB_ENV
+          
     
       - name: get version
         id: version
@@ -32,7 +37,6 @@ jobs:
     
       - name: Set Environment Variables
         run: |
-          echo "packageName=${{steps.packageName.outputs.prop}}" >> $GITHUB_ENV
           echo "zipFile=${{ env.packageName }}-${{ steps.version.outputs.prop }}".zip >> $GITHUB_ENV
           echo "unityPackage=${{ env.packageName }}-${{ steps.version.outputs.prop }}.unitypackage" >> $GITHUB_ENV
         
