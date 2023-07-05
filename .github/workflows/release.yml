@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: get packageName
+      - name: Get packageName
         id: packageName
         uses: notiz-dev/github-action-json-property@7c8cf5cc36eb85d8d287a8086a39dac59628eb31
         with: 
@@ -29,7 +29,7 @@ jobs:
         run: |
           echo "packageName=${{steps.packageName.outputs.prop}}" >> $GITHUB_ENV
           
-      - name: get version
+      - name: Get version
         id: version
         uses: notiz-dev/github-action-json-property@7c8cf5cc36eb85d8d287a8086a39dac59628eb31
         with: 
@@ -41,7 +41,7 @@ jobs:
           echo "zipFile=${{ env.packageName }}-${{ steps.version.outputs.prop }}".zip >> $GITHUB_ENV
           echo "unityPackage=${{ env.packageName }}-${{ steps.version.outputs.prop }}.unitypackage" >> $GITHUB_ENV
         
-      - name: Move Files
+      - name: Move files and List targets
         run: |
           shopt -s extglob
           mkdir -p "Packages/${{env.packageName}}"
