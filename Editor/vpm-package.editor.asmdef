@@ -1,10 +1,6 @@
 {
     "name": "vpm-package.editor",
-    "references": [
-        "nadena.dev.modular-avatar.core",
-        "nadena.dev.modular-avatar.core.editor",
-        "nadena.dev.ndmf"
-    ],
+    "references": [ ],
     "includePlatforms": [
         "Editor"
     ],
