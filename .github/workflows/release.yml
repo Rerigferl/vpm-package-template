@@ -36,3 +36,11 @@ jobs:
             ${{steps.packager.outputs.zip-path}}
             ${{steps.packager.outputs.unitypackage-path}}
             ${{steps.packager.outputs.manifest-path}}
+            
+      - name: Rebuild repository
+        uses: peter-evans/repository-dispatch@v3
+        if: ${{ secrets.PAT != '' }}
+        with:
+          token: ${{ secrets.PAT }}
+          repository: rerigferl/vpm
+          event-type: build-listing
