@@ -40,6 +40,7 @@ jobs:
           git mv ./Editor/${{steps.packageName.outputs.prop}}.editor.asmdef ./Editor/${{ github.event.inputs.name }}.editor.asmdef
           sed -i -e "s/${{steps.packageName.outputs.prop}}/${{ github.event.inputs.name }}/" ./Runtime/${{steps.packageName.outputs.prop}}.runtime.asmdef
           git mv ./Runtime/${{steps.packageName.outputs.prop}}.runtime.asmdef ./Runtime/${{ github.event.inputs.name }}.runtime.asmdef
+          sed -i -e "s/${{steps.packageName.outputs.prop}}/${{ github.event.inputs.name }}/" ./Runtime/AssemblyInfo.cs
 
       - name: Commit changes
         env:
